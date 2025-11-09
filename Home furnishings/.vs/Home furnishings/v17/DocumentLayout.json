@@ -1,0 +1,236 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Hazem\\source\\Home furnishings\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|c:\\users\\hazem\\source\\home furnishings\\home furnishings\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|solutionrelative:home furnishings\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|c:\\users\\hazem\\source\\home furnishings\\home furnishings\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|solutionrelative:home furnishings\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|c:\\users\\hazem\\source\\home furnishings\\home furnishings\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|solutionrelative:home furnishings\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|c:\\users\\hazem\\source\\home furnishings\\home furnishings\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|solutionrelative:home furnishings\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|c:\\users\\hazem\\source\\home furnishings\\home furnishings\\models\\context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|solutionrelative:home furnishings\\models\\context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|c:\\users\\hazem\\source\\home furnishings\\home furnishings\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|solutionrelative:home furnishings\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|c:\\users\\hazem\\source\\home furnishings\\home furnishings\\models\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|solutionrelative:home furnishings\\models\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|c:\\users\\hazem\\source\\home furnishings\\home furnishings\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|solutionrelative:home furnishings\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|c:\\users\\hazem\\source\\home furnishings\\home furnishings\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|solutionrelative:home furnishings\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|c:\\users\\hazem\\source\\home furnishings\\home furnishings\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|solutionrelative:home furnishings\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|c:\\users\\hazem\\source\\home furnishings\\home furnishings\\home furnishings.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|solutionrelative:home furnishings\\home furnishings.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|c:\\users\\hazem\\source\\home furnishings\\home furnishings\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A43A41B9-A6EF-4701-B201-2FD57D2D3AD2}|Home furnishings\\Home furnishings.csproj|solutionrelative:home furnishings\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 12,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\appsettings.json",
+              "RelativeDocumentMoniker": "Home furnishings\\appsettings.json",
+              "ToolTip": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\appsettings.json",
+              "RelativeToolTip": "Home furnishings\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-09T00:06:21.344Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrderItem.cs",
+              "DocumentMoniker": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\OrderItem.cs",
+              "RelativeDocumentMoniker": "Home furnishings\\Models\\OrderItem.cs",
+              "ToolTip": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\OrderItem.cs",
+              "RelativeToolTip": "Home furnishings\\Models\\OrderItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T23:45:53.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Context.cs",
+              "DocumentMoniker": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\Context.cs",
+              "RelativeDocumentMoniker": "Home furnishings\\Models\\Context.cs",
+              "ToolTip": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\Context.cs",
+              "RelativeToolTip": "Home furnishings\\Models\\Context.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T23:31:46.646Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "Home furnishings\\Models\\Order.cs",
+              "ToolTip": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\Order.cs",
+              "RelativeToolTip": "Home furnishings\\Models\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T23:31:46.429Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Cart.cs",
+              "DocumentMoniker": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\Cart.cs",
+              "RelativeDocumentMoniker": "Home furnishings\\Models\\Cart.cs",
+              "ToolTip": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\Cart.cs",
+              "RelativeToolTip": "Home furnishings\\Models\\Cart.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T23:31:46.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "Home furnishings\\Models\\Category.cs",
+              "ToolTip": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\Category.cs",
+              "RelativeToolTip": "Home furnishings\\Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T23:31:44.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Home furnishings\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Home furnishings\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T23:47:22.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Payment.cs",
+              "DocumentMoniker": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\Payment.cs",
+              "RelativeDocumentMoniker": "Home furnishings\\Models\\Payment.cs",
+              "ToolTip": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\Payment.cs",
+              "RelativeToolTip": "Home furnishings\\Models\\Payment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T23:31:46.238Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Home furnishings\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\Product.cs",
+              "RelativeToolTip": "Home furnishings\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T23:31:45.581Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Home furnishings\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Models\\User.cs",
+              "RelativeToolTip": "Home furnishings\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T23:31:45.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Home furnishings",
+              "DocumentMoniker": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Home furnishings.csproj",
+              "RelativeDocumentMoniker": "Home furnishings\\Home furnishings.csproj",
+              "ToolTip": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Home furnishings.csproj",
+              "RelativeToolTip": "Home furnishings\\Home furnishings.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-09T00:07:32.607Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Program.cs",
+              "RelativeDocumentMoniker": "Home furnishings\\Program.cs",
+              "ToolTip": "C:\\Users\\Hazem\\source\\Home furnishings\\Home furnishings\\Program.cs",
+              "RelativeToolTip": "Home furnishings\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T00:06:10.186Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
