@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace Home_furnishings.Models
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext<User, IdentityRole<int>, int>
     {
         public Context(DbContextOptions<Context> options)
          : base(options)

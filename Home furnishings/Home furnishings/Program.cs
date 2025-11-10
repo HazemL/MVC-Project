@@ -1,4 +1,5 @@
 using Home_furnishings.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Home_furnishings
@@ -15,6 +16,11 @@ namespace Home_furnishings
             {
                 optionsBuilder.UseSqlServer(builder.Configuration.GetConnectionString("CS"));
             });
+
+            builder.Services.AddIdentity<User,IdentityRole<int>>()
+                .AddEntityFrameworkStores<Context>();
+
+
 
             var app = builder.Build();
 
