@@ -24,5 +24,53 @@ namespace Home_furnishings.Controllers
             ViewBag.Success = "Registration successful!";
             return View();
         }
+
+
+
+
+
+
+
+
+
+
+        // GET: /Account/Login
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        // POST: /Account/Login
+        [HttpPost]
+        public IActionResult Login(LoginUser_ViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                // لو فيه أخطاء Validation
+                return View(model);
+            }
+
+            // ✅ هنا تقدر تضيف كود تسجيل الدخول الفعلي:
+            // مثلاً:
+            // var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+            // لو فشل:
+            // ModelState.AddModelError("", "Invalid login attempt.");
+
+            if (model.Email == "admin@test.com" && model.Password == "Admin@123")
+            {
+                ViewBag.Success = "Login successful!";
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Invalid email or password.");
+            }
+
+            return View(model);
+        }
+
+
+
+
     }
 }
