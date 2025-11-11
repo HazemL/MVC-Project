@@ -1,0 +1,227 @@
+﻿@model Home_furnishings.ViewModels.CategoryProductsViewModel
+
+@{
+    ViewData["Title"] = Model.CategoryName + " Department";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #b9b7b77f;
+        }
+        header {
+            background: #873e23;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 50px;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #ffba3a;
+        }
+        .basket {
+            position: relative;
+            cursor: pointer;
+        }
+        .basket img {
+            width: 30px;
+        }
+        .counter {
+            background: #ffba3aba;
+            color: white;
+            font-size: 0.8rem;
+            border-radius: 50%;
+            padding: 2px 6px;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            padding: 20px;
+        }
+        .product {
+            width: 300px;
+            background: #ffffff7a;
+            border-radius: 12px;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        .product:hover {
+            transform: scale(1.03);
+        }
+        .product img {
+            width: 98%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .product h3 {
+            margin: 10px 0;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        .product p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+        .price {
+            color: #873e23;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+        .btn {
+            background: #c0392b;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background: #e74c3c;
+        }
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    @* <header>
+        <h1>@Model.CategoryName Department</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-controller="Product" asp-action="Index">All Products</a></li>
+            </ul>
+            <div class="basket">
+                <a asp-controller="Cart" asp-action="Index">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="Basket">
+                </a>
+                <div class="counter" id="cartCounter">0</div>
+            </div>
+        </nav>
+    </header> *@
+
+    <div class="products" id="productList">
+        @if (Model.Products.Any())
+        {
+            @foreach (var product in Model.Products)
+            {
+                <div class="product" data-id="@product.ProductId">
+                    <img src="@product.ImageUrl" alt="@product.Name">
+                    <h3>@product.Name</h3>
+                    <p>@product.Description</p>
+                    <div class="price">$@product.Price</div>
+                    <p style="color: @(product.IsInStock ? "green" : "red")">
+                        @(product.IsInStock ? $"In Stock ({product.Quantity})" : "Out of Stock")
+                    </p>
+                    <button class="btn add-to-cart" 
+                            data-id="@product.ProductId" 
+                            data-name="@product.Name" 
+                            data-price="@product.Price" 
+                            data-image="@product.ImageUrl"
+                            @(!product.IsInStock ? "disabled" : "")>
+                        @(product.IsInStock ? "Add to Cart" : "Out of Stock")
+                    </button>
+                </div>
+            }
+        }
+        else
+        {
+            <div style="text-align: center; padding: 50px; width: 100%;">
+                <h2>No products available in this category</h2>
+            </div>
+        }
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Load cart count on page load
+            loadCartCount();
+
+            // Add to cart functionality
+            $('.add-to-cart').click(function() {
+                const productId = $(this).data('id');
+                const productName = $(this).data('name');
+                
+                $.ajax({
+                    url: '@Url.Action("AddToCart", "Cart")',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ productId: productId, quantity: 1 }),
+                    headers: {
+                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            $('#cartCounter').text(response.cartCount);
+                            alert(productName + ' added to cart!');
+                        } else {
+                            if (response.redirectToLogin) {
+                                alert('Please login first');
+                                window.location.href = '@Url.Action("Login", "Account")';
+                            } else {
+                                alert(response.message);
+                            }
+                        }
+                    },
+                    error: function() {
+                        alert('Error adding product to cart');
+                    }
+                });
+            });
+
+            function loadCartCount() {
+                $.ajax({
+                    url: '@Url.Action("GetCartCount", "Cart")',
+                    type: 'GET',
+                    success: function(response) {
+                        $('#cartCounter').text(response.count);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

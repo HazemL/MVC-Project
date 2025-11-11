@@ -1,4 +1,5 @@
 using Home_furnishings.Models;
+using Home_furnishings.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

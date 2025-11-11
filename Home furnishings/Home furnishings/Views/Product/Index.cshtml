@@ -1,0 +1,110 @@
+﻿<!-- Views/Product/Index.cshtml -->
+@model List<Home_furnishings.ViewModels.ProductViewModel>
+
+@{
+    ViewData["Title"] = "All Products";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/main.css">
+</head>
+<body>
+    <header>
+        <h1>All Products</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-controller="Category" asp-action="Curtains">Curtains</a></li>
+                <li><a asp-controller="Category" asp-action="Carpets">Carpets</a></li>
+            </ul>
+            <div class="basket">
+                <a asp-controller="Cart" asp-action="Index">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="Basket">
+                </a>
+                <div class="counter" id="cartCounter">0</div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="products" id="productList">
+        @if (Model.Any())
+        {
+            @foreach (var product in Model)
+            {
+                <div class="product">
+                    <img src="@product.ImageUrl" alt="@product.Name">
+                    <h3>@product.Name</h3>
+                    <p class="category">@product.CategoryName</p>
+                    <p>@product.Description</p>
+                    <div class="price">$@product.Price</div>
+                    <p style="color: @(product.IsInStock ? "green" : "red")">
+                        @(product.IsInStock ? $"In Stock ({product.Quantity})" : "Out of Stock")
+                    </p>
+                    <button class="btn add-to-cart"
+                            data-id="@product.ProductId"
+                            data-name="@product.Name"
+                            @(!product.IsInStock ? "disabled" : "")>
+                        @(product.IsInStock ? "Add to Cart" : "Out of Stock")
+                    </button>
+                    <a asp-controller="Product" asp-action="Details" asp-route-id="@product.ProductId">
+                        <button class="btn btn-secondary">View Details</button>
+                    </a>
+                </div>
+            }
+        }
+        else
+        {
+            <div style="text-align: center; padding: 50px; width: 100%;">
+                <h2>No products available</h2>
+            </div>
+        }
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            loadCartCount();
+
+            $('.add-to-cart').click(function() {
+                const productId = $(this).data('id');
+                const productName = $(this).data('name');
+
+                $.ajax({
+                    url: '@Url.Action("AddToCart", "Cart")',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ productId: productId, quantity: 1 }),
+                    success: function(response) {
+                        if (response.success) {
+                            $('#cartCounter').text(response.cartCount);
+                            alert(productName + ' added to cart!');
+                        } else {
+                            if (response.redirectToLogin) {
+                                alert('Please login first');
+                                window.location.href = '@Url.Action("Login", "Account")';
+                            } else {
+                                alert(response.message);
+                            }
+                        }
+                    }
+                });
+            });
+
+            function loadCartCount() {
+                $.ajax({
+                    url: '@Url.Action("GetCartCount", "Cart")',
+                    type: 'GET',
+                    success: function(response) {
+                        $('#cartCounter').text(response.count);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
