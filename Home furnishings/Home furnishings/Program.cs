@@ -1,4 +1,5 @@
 using Home_furnishings.Models;
+using Home_furnishings.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,21 @@ namespace Home_furnishings
 
             builder.Services.AddIdentity<User,IdentityRole<int>>()
                 .AddEntityFrameworkStores<Context>();
+
+
+
+            // Register Repositories
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<ICartRepository, CartRepository>();
+
+            // Add Session
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
 
 

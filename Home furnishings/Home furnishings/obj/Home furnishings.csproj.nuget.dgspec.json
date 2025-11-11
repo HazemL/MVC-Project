@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mohamed Nasr\\source\\repos\\MVC-Project\\Home furnishings\\Home furnishings\\Home furnishings.csproj": {}
+    "C:\\Users\\drapo\\Desktop\\zzzzzzzzzzzzzzz\\MVC-Project\\Home furnishings\\Home furnishings\\Home furnishings.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mohamed Nasr\\source\\repos\\MVC-Project\\Home furnishings\\Home furnishings\\Home furnishings.csproj": {
+    "C:\\Users\\drapo\\Desktop\\zzzzzzzzzzzzzzz\\MVC-Project\\Home furnishings\\Home furnishings\\Home furnishings.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mohamed Nasr\\source\\repos\\MVC-Project\\Home furnishings\\Home furnishings\\Home furnishings.csproj",
+        "projectUniqueName": "C:\\Users\\drapo\\Desktop\\zzzzzzzzzzzzzzz\\MVC-Project\\Home furnishings\\Home furnishings\\Home furnishings.csproj",
         "projectName": "Home furnishings",
-        "projectPath": "C:\\Users\\Mohamed Nasr\\source\\repos\\MVC-Project\\Home furnishings\\Home furnishings\\Home furnishings.csproj",
-        "packagesPath": "C:\\Users\\Mohamed Nasr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mohamed Nasr\\source\\repos\\MVC-Project\\Home furnishings\\Home furnishings\\obj\\",
+        "projectPath": "C:\\Users\\drapo\\Desktop\\zzzzzzzzzzzzzzz\\MVC-Project\\Home furnishings\\Home furnishings\\Home furnishings.csproj",
+        "packagesPath": "C:\\Users\\drapo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\drapo\\Desktop\\zzzzzzzzzzzzzzz\\MVC-Project\\Home furnishings\\Home furnishings\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Mohamed Nasr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\drapo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -92,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100-rc.2.25502.107/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
