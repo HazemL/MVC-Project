@@ -10,25 +10,33 @@ namespace Home_furnishings
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            //   MVC
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<Context>(optionsBuilder =>
+
+            //DB
+            builder.Services.AddDbContext<Context>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("CS"))
+            );
+
+
+            //Identity
+            builder.Services.AddIdentity<User, IdentityRole<int>>()
+                .AddEntityFrameworkStores<Context>()
+                .AddDefaultTokenProviders();
+
+           //cookie
+            builder.Services.ConfigureApplicationCookie(options =>
             {
-                optionsBuilder.UseSqlServer(builder.Configuration.GetConnectionString("CS"));
+                options.LoginPath = "/Account/Login";
+                options.AccessDeniedPath = "/Account/AccessDenied";
             });
-
-            builder.Services.AddIdentity<User,IdentityRole<int>>()
-                .AddEntityFrameworkStores<Context>();
-
-
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+           
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -36,14 +44,17 @@ namespace Home_furnishings
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Index}/{id?}"
+            );
 
             app.Run();
         }
+
     }
+
 }
