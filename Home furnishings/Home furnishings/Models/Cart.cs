@@ -10,7 +10,7 @@ namespace Home_furnishings.Models
 
         [ForeignKey("User")]
         public int UserId { get; set; }
-        public User User { get; set; }
+        public ApplicationUser User { get; set; }
 
    
         public  List<Product> Products { get; set; }

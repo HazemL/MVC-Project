@@ -8,9 +8,9 @@ namespace Home_furnishings.Controllers
     public class RoleController : Controller
     {
         private readonly RoleManager<IdentityRole<int>> _roleManager;
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public RoleController(RoleManager<IdentityRole<int>> roleManager, UserManager<User> userManager)
+        public RoleController(RoleManager<IdentityRole<int>> roleManager, UserManager<ApplicationUser> userManager)
         {
             _roleManager = roleManager;
             _userManager = userManager;

@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Home_furnishings.Models
 {
-    public class Context : IdentityDbContext<User, IdentityRole<int>, int>
+    public class Context : IdentityDbContext<ApplicationUser, IdentityRole<int>, int>
     {
         public Context(DbContextOptions<Context> options): base(options)
         {
         }
 
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<ApplicationUser> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Cart> Carts { get; set; }

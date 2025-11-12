@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Home_furnishings.Models
 {
-    public class User:IdentityUser<int>
+    public class ApplicationUser:IdentityUser<int>
     {
         [Required]       
             

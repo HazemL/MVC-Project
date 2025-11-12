@@ -1,4 +1,4 @@
-using Home_furnishings.Models;
+﻿using Home_furnishings.Models;
 using Home_furnishings.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +15,14 @@ namespace Home_furnishings
             builder.Services.AddControllersWithViews();
 
             //Identity
-            builder.Services.AddIdentity<User, IdentityRole<int>>()
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole<int>>(options =>
+            {
+                options.Password.RequiredLength = 4;         // طول الباسورد
+                options.Password.RequireDigit = false;        // لازم رقم
+                options.Password.RequireLowercase = false;    // حرف صغير
+                options.Password.RequireUppercase = false;    // حرف كبير
+                options.Password.RequireNonAlphanumeric = false; // رموز خاصة مش مطلوبة
+            })
                 .AddEntityFrameworkStores<Context>()
                 .AddDefaultTokenProviders();
             //DB
@@ -29,11 +36,29 @@ namespace Home_furnishings
             builder.Services.AddScoped<ICartRepository, CartRepository>();
 
             //cookie
+          
             builder.Services.ConfigureApplicationCookie(options =>
             {
+                // اسم الكوكي
+                options.Cookie.Name = ".AspNetCore.Identity.Application";
+
+                // مدة صلاحية الكوكي (مثلاً يوم واحد)
+                options.ExpireTimeSpan = TimeSpan.FromDays(1);
+
+                // لو المستخدم اختار "تذكرني"
+                options.SlidingExpiration = true;
+
+                // اجبار HTTPS (لو المشروع يعمل على HTTPS)
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+
+                // الكوكي مش قابلة للقراءة من جافاسكريبت
+                options.Cookie.HttpOnly = true;
+
+                // مسار تسجيل الدخول
                 options.LoginPath = "/Account/Login";
-                options.AccessDeniedPath = "/Account/AccessDenied";
             });
+
+
             // Add Session
             builder.Services.AddSession(options =>
             {

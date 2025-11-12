@@ -12,13 +12,13 @@ namespace Home_furnishings.Controllers
         private readonly ICategoryRepository _categoryRepository;
         private readonly IProductRepository _productRepository;
         private readonly ICartRepository _cartRepository;
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
         public HomeController(
             ICategoryRepository categoryRepository,
             IProductRepository productRepository,
             ICartRepository cartRepository,
-            UserManager<User> userManager)
+            UserManager<ApplicationUser> userManager)
         {
             _categoryRepository = categoryRepository;
             _productRepository = productRepository;

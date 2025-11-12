@@ -9,10 +9,10 @@ namespace Home_furnishings.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<User> userManager;
-        private readonly SignInManager<User> signInManager;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -30,7 +30,7 @@ namespace Home_furnishings.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User
+                var _user = new ApplicationUser
                 {
                     UserName = model.UserName,
                     FullName = model.FullName,
@@ -38,7 +38,7 @@ namespace Home_furnishings.Controllers
                 };
 
                 // Create user with hashed password
-                var result = await userManager.CreateAsync(user, model.Password);
+                 var result = await userManager.CreateAsync(_user, model.Password);
 
                 if (!result.Succeeded)
                 {
@@ -50,10 +50,10 @@ namespace Home_furnishings.Controllers
                 }
                 //cookeis
                 // Sign in automatically after registration 
-                await signInManager.SignInAsync(user, isPersistent: false);
+                await signInManager.SignInAsync(_user, isPersistent: true);
 
                 TempData["Success"] = "Registration successful!";
-                return RedirectToAction("Index", "Account");
+                return RedirectToAction("Login", "Account");
             }
 
             return View(model);
