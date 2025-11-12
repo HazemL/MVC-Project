@@ -54,6 +54,7 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+<<<<<<< HEAD
 [C:/Users/Mohamed Nasr/source/repos/MVC-Project/Home furnishings/Home furnishings/Views/Orders/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -78,6 +79,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxFZGl0VXNlclJvbGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+=======
+[C:/Users/Mohamed Nasr/source/repos/MVC-Project/Home furnishings/Home furnishings/Views/Role/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mohamed Nasr/source/repos/MVC-Project/Home furnishings/Home furnishings/Views/Role/EditUserRoles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxFZGl0VXNlclJvbGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+>>>>>>> 4527b5b5244bd6e66ecfab800feafb0bcb9467d6
 [C:/Users/Mohamed Nasr/source/repos/MVC-Project/Home furnishings/Home furnishings/Views/Role/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

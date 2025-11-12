@@ -91,20 +91,35 @@ namespace Home_furnishings.Controllers
                     TempData["Success"] = "Login successful!";
                     return RedirectToAction("Index", "Home");  
                 }
+                if (result.IsLockedOut)
+                {
+                    ModelState.AddModelError("", "Account is locked. Try again later.");
+                }
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid email or password.");
-                    return View(model);
+                    return View("Login", model);
                 }
             }
 
-           
+            ModelState.AddModelError("", "Invalid login attempt. Please check your email or password.");
             return View(model);
+        }
+
+
+        //logout
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            TempData["Success"] = "You have been logged out.";
+            return RedirectToAction("Index", "Home");
+
         }
 
 
 
 
-
-    }
+        }
 }

@@ -6,8 +6,7 @@ namespace Home_furnishings.Models
 {
     public class Context : IdentityDbContext<User, IdentityRole<int>, int>
     {
-        public Context(DbContextOptions<Context> options)
-         : base(options)
+        public Context(DbContextOptions<Context> options): base(options)
         {
         }
 
