@@ -137,7 +137,13 @@ namespace Home_furnishings.Controllers
         }
 
 
-
-
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
+
+
+
+
+    }
 }

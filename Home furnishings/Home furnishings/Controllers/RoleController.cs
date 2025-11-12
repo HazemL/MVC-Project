@@ -1,10 +1,12 @@
 ﻿using Home_furnishings.Models;
 using Home_furnishings.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Home_furnishings.Controllers
 {
+    //[Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
         private readonly RoleManager<IdentityRole<int>> _roleManager;
@@ -25,6 +27,7 @@ namespace Home_furnishings.Controllers
 
           
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();

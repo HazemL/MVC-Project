@@ -7,7 +7,7 @@ namespace Home_furnishings
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -39,23 +39,15 @@ namespace Home_furnishings
           
             builder.Services.ConfigureApplicationCookie(options =>
             {
-                // اسم الكوكي
+                
                 options.Cookie.Name = ".AspNetCore.Identity.Application";
-
-                // مدة صلاحية الكوكي (مثلاً يوم واحد)
                 options.ExpireTimeSpan = TimeSpan.FromDays(1);
-
-                // لو المستخدم اختار "تذكرني"
                 options.SlidingExpiration = true;
-
-                // اجبار HTTPS (لو المشروع يعمل على HTTPS)
                 options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-
-                // الكوكي مش قابلة للقراءة من جافاسكريبت
                 options.Cookie.HttpOnly = true;
-
-                // مسار تسجيل الدخول
                 options.LoginPath = "/Account/Login";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+
             });
 
 
@@ -89,6 +81,29 @@ namespace Home_furnishings
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}"
             );
+
+
+            async Task SeedRolesAsync(IServiceProvider serviceProvider)
+            {
+                var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole<int>>>();
+                string[] roleNames = { "Admin", "Manager", "Customer" };
+
+                foreach (var roleName in roleNames)
+                {
+                    if (!await roleManager.RoleExistsAsync(roleName))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole<int> { Name = roleName });
+                    }
+                }
+            }
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                await SeedRolesAsync(services);
+            }
+
+
 
             app.Run();
         }
