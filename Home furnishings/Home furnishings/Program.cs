@@ -23,25 +23,24 @@ namespace Home_furnishings
                 options.UseSqlServer(builder.Configuration.GetConnectionString("CS"))
             );
 
+            // Register Repositories
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<ICartRepository, CartRepository>();
+
             //cookie
             builder.Services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = "/Account/Login";
                 options.AccessDeniedPath = "/Account/AccessDenied";
             });
-
-            //Identity
-            builder.Services.AddIdentity<User, IdentityRole<int>>()
-                .AddEntityFrameworkStores<Context>()
-                .AddDefaultTokenProviders();
-
-           //cookie
-            builder.Services.ConfigureApplicationCookie(options =>
+            // Add Session
+            builder.Services.AddSession(options =>
             {
-                options.LoginPath = "/Account/Login";
-                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
             });
-             
 
 
 
