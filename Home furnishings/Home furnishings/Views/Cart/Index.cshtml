@@ -1,0 +1,262 @@
+﻿<!-- Views/Cart/Index.cshtml -->
+@model Home_furnishings.ViewModels.CartViewModel
+
+@{
+    ViewData["Title"] = "Your Shopping Cart";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background: #873e23;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            header h1 {
+                margin: 0;
+                font-size: 1.5rem;
+            }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 50px;
+            margin: 0;
+            padding: 0;
+        }
+
+            .nav-links a {
+                text-decoration: none;
+                color: white;
+                transition: color 0.3s ease;
+            }
+
+        .cart-container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding: 12px;
+            border-radius: 10px;
+            transition: background 0.2s;
+        }
+
+            .cart-item:hover {
+                background: #f9f9f9;
+            }
+
+            .cart-item img {
+                width: 90px;
+                height: 90px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-right: 20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+        .cart-details {
+            flex-grow: 1;
+            padding: 0 15px;
+        }
+
+            .cart-details h3 {
+                margin: 0;
+                font-size: 1.2rem;
+                color: #222;
+            }
+
+        .price {
+            color: #873e23;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        .remove-btn {
+            background: #c0392b;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+
+            .remove-btn:hover {
+                background: #e74c3c;
+                transform: scale(1.05);
+            }
+
+        .total-box {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f8f3ef;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: 2px solid #873e23;
+            color: #222;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: #777;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: #873e23;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #c0392b;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Shopping Cart</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-controller="Product" asp-action="Index">Continue Shopping</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="cart-container">
+        @if (Model.Items.Any())
+        {
+            @foreach (var item in Model.Items)
+            {
+                <div class="cart-item" data-product-id="@item.ProductId">
+                    <img src="@item.ImageUrl" alt="@item.ProductName">
+                    <div class="cart-details">
+                        <h3>@item.ProductName</h3>
+                        <div class="price">$@item.Price</div>
+                        @if (!item.IsInStock)
+                        {
+                            <p style="color: red;">Out of Stock</p>
+                        }
+                    </div>
+                    <button class="remove-btn" data-product-id="@item.ProductId">Remove</button>
+                </div>
+            }
+
+            <div class="total-box">
+                <span>Total: </span>
+                <span id="totalPrice">$@Model.TotalPrice.ToString("F2")</span>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-danger" id="clearCart">Clear Cart</button>
+                <button class="btn btn-primary" id="checkout">Proceed to Checkout</button>
+            </div>
+        }
+        else
+        {
+            <div class="empty-message">
+                <i class="fa fa-shopping-cart" style="font-size: 3rem; color: #ccc;"></i>
+                <h2>Your cart is empty</h2>
+                <p><a asp-controller="Product" asp-action="Index">Continue Shopping</a></p>
+            </div>
+        }
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Remove item from cart
+            $('.remove-btn').click(function() {
+                const productId = $(this).data('product-id');
+                const cartItem = $(this).closest('.cart-item');
+
+                if (confirm('Are you sure you want to remove this item?')) {
+                    $.ajax({
+                        url: '@Url.Action("Remove", "Cart")',
+                        type: 'POST',
+                        data: { productId: productId },
+                        success: function(response) {
+                            if (response.success) {
+                                cartItem.fadeOut(300, function() {
+                                    $(this).remove();
+                                    $('#totalPrice').text('$' + response.totalPrice.toFixed(2));
+
+                                    if ($('.cart-item').length === 0) {
+                                        location.reload();
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+
+            // Clear cart
+            $('#clearCart').click(function() {
+                if (confirm('Are you sure you want to clear your cart?')) {
+                    $.ajax({
+                        url: '@Url.Action("Clear", "Cart")',
+                        type: 'POST',
+                        success: function(response) {
+                            if (response.success) {
+                                location.reload();
+                            }
+                        }
+                    });
+                }
+            });
+
+            // Checkout (placeholder)
+            $('#checkout').click(function() {
+                alert('Checkout functionality coming soon!');
+            });
+        });
+    </script>
+</body>
+</html>
