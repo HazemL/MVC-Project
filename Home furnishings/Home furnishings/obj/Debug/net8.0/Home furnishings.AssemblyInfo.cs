@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Home furnishings")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+98426cc790a0f9a9b393c6652f4e4018f3999155")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a12343a77ee8140c1957d5e58b651410002e11c")]
->>>>>>> 4527b5b5244bd6e66ecfab800feafb0bcb9467d6
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be983fb0164c8f1333331b55b31fd338ea246057")]
 [assembly: System.Reflection.AssemblyProductAttribute("Home furnishings")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Home furnishings")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

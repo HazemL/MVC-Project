@@ -14,11 +14,21 @@ namespace Home_furnishings
             //   MVC
             builder.Services.AddControllersWithViews();
 
+            //Identity
+            builder.Services.AddIdentity<User, IdentityRole<int>>()
+                .AddEntityFrameworkStores<Context>()
+                .AddDefaultTokenProviders();
             //DB
             builder.Services.AddDbContext<Context>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("CS"))
             );
 
+            //cookie
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Account/Login";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+            });
 
             //Identity
             builder.Services.AddIdentity<User, IdentityRole<int>>()
@@ -30,31 +40,6 @@ namespace Home_furnishings
             {
                 options.LoginPath = "/Account/Login";
                 options.AccessDeniedPath = "/Account/AccessDenied";
-            });
-
-            builder.Services.AddIdentity<User, IdentityRole<int>>()
-                .AddEntityFrameworkStores<Context>()
-                .AddDefaultTokenProviders();
-
-            //cookie
-            builder.Services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = "/Account/Login";
-                options.AccessDeniedPath = "/Account/AccessDenied";
-            });
-
-
-            // Register Repositories
-            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-            builder.Services.AddScoped<IProductRepository, ProductRepository>();
-            builder.Services.AddScoped<ICartRepository, CartRepository>();
-
-            // Add Session
-            builder.Services.AddSession(options =>
-            {
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
-                options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
             });
              
 
