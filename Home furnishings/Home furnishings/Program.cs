@@ -18,9 +18,17 @@ namespace Home_furnishings
                 optionsBuilder.UseSqlServer(builder.Configuration.GetConnectionString("CS"));
             });
 
-            builder.Services.AddIdentity<User,IdentityRole<int>>()
-                .AddEntityFrameworkStores<Context>();
+            //Identity
+            builder.Services.AddIdentity<User, IdentityRole<int>>()
+                .AddEntityFrameworkStores<Context>()
+                .AddDefaultTokenProviders();
 
+            //cookie
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Account/Login";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+            });
 
 
             // Register Repositories
@@ -35,7 +43,7 @@ namespace Home_furnishings
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-
+             
 
 
             var app = builder.Build();
@@ -52,7 +60,7 @@ namespace Home_furnishings
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
