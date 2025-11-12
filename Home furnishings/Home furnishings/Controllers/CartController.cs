@@ -36,7 +36,7 @@ namespace Home_furnishings.Controllers
 
             var cart = _cartRepository.GetCartWithProducts(user.Id);
 
-            if (cart == null || !cart.Products.Any())
+            if (cart == null  || cart.Products == null|| !cart.Products.Any())
             {
                 return View(new CartViewModel
                 {
@@ -59,6 +59,8 @@ namespace Home_furnishings.Controllers
                     IsInStock = p.IsActive && p.Quantity > 0,
                     AvailableStock = p.Quantity
                 }).ToList(),
+
+
                 TotalItems = cart.Products.Count,
                 TotalPrice = cart.Products.Sum(p => p.Price)
             };

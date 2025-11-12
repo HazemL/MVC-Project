@@ -11,4 +11,4 @@ namespace Home_furnishings.Repository
         void ClearCart(int userId);
         int GetCartItemCount(int userId);
     }
-}
+}   

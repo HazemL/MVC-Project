@@ -14,6 +14,7 @@ namespace Home_furnishings.Controllers
             _productRepository = productRepository;
         }
 
+
         // GET: Product
         public IActionResult Index()
         {
