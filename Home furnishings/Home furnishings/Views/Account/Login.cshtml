@@ -26,16 +26,16 @@
             </div>
         }
 
-        <form asp-controller="Home" asp-action="Index" method="post">
+        <form  asp-action="Login" method="post">
             <div class="mb-3">
                 <label asp-for="Email" class="form-label fw-semibold"></label>
-                <input asp-for="Email" class="form-control form-control-lg" placeholder="Enter your email" />
+                <input asp-for="Email" class="form-control form-control-lg" placeholder="Enter your email" value="@Model.Email" />
                 <span asp-validation-for="Email" class="text-danger small"></span>
             </div>
 
             <div class="mb-3">
                 <label asp-for="Password" class="form-label fw-semibold"></label>
-                <input asp-for="Password" type="password" class="form-control form-control-lg" placeholder="Enter your password" />
+                <input asp-for="Password" type="password" class="form-control form-control-lg" placeholder="Enter your password" value="@Model.Password" />
                 <span asp-validation-for="Password" class="text-danger small"></span>
             </div>
 

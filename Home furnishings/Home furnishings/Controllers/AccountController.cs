@@ -22,12 +22,18 @@ namespace Home_furnishings.Controllers
         [HttpGet]
         public IActionResult Register()
         {
+            if (User.Identity != null && User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
+
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Register(RegisterUser_ViewModel model)
         {
+            if (User.Identity != null && User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
+
             if (ModelState.IsValid)
             {
                 var _user = new ApplicationUser
@@ -37,23 +43,21 @@ namespace Home_furnishings.Controllers
                     Email = model.Email
                 };
 
-                // Create user with hashed password
-                 var result = await userManager.CreateAsync(_user, model.Password);
-
-                if (!result.Succeeded)
+                var result = await userManager.CreateAsync(_user, model.Password);
+                if (result.Succeeded)
                 {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError(string.Empty, error.Description);
-                    }
-                    return View(model);
-                }
-                //cookeis
-                // Sign in automatically after registration 
-                await signInManager.SignInAsync(_user, isPersistent: true);
+                   
+                    TempData["Email"] = model.Email;
+                    TempData["Password"] = model.Password;
 
-                TempData["Success"] = "Registration successful!";
-                return RedirectToAction("Login", "Account");
+                    TempData["Success"] = "Registration successful! Please login.";
+                    return RedirectToAction("Login", "Account");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
             }
 
             return View(model);
@@ -71,44 +75,58 @@ namespace Home_furnishings.Controllers
 
 
         // GET: /Account/Login
+
         [HttpGet]
         public IActionResult Login()
         {
-            return View();
+            if (User.Identity != null && User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
+
+            var model = new LoginUser_ViewModel();
+
+            if (TempData["Email"] != null)
+                model.Email = TempData["Email"].ToString();
+            if (TempData["Password"] != null)
+                model.Password = TempData["Password"].ToString();
+
+            return View(model);
         }
 
         // POST: /Account/Login
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginUser_ViewModel model)
         {
             if (ModelState.IsValid)
             {
-                
-                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
 
-                if (result.Succeeded)
+                var user = await userManager.FindByEmailAsync(model.Email); // أو FindByNameAsync
+                if (user != null)
                 {
-                    TempData["Success"] = "Login successful!";
-                    return RedirectToAction("Index", "Home");  
-                }
-                if (result.IsLockedOut)
-                {
-                    ModelState.AddModelError("", "Account is locked. Try again later.");
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid email or password.");
-                    return View("Login", model);
+
+                    var passwordValid = await userManager.CheckPasswordAsync(user, model.Password);
+                    if (passwordValid)
+                    {
+                        await signInManager.SignInAsync(user, isPersistent: model.RememberMe);
+                        TempData["Success"] = "Login successful!";
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                   
                 }
             }
+           
+         ModelState.AddModelError("", "Invalid login attempt. Please check your email or password.");
+            
 
-            ModelState.AddModelError("", "Invalid login attempt. Please check your email or password.");
+            
             return View(model);
         }
 
 
         //logout
-        [HttpPost]
+        //[HttpPost]
+       [HttpGet]
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
