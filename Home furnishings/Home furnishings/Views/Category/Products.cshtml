@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = Model.CategoryName + " Department";
+    Layout = "_MyLayout";
 }
 
 <!DOCTYPE html>
@@ -19,14 +20,14 @@
         header {
             background: #873e23;
             color: white;
-            padding: 15px 20px;
+      
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         header h1 {
             margin: 0;
-            font-size: 1.5rem;
+            font-size: 1.7rem;
         }
         nav {
             display: flex;
@@ -94,7 +95,7 @@
         .product h3 {
             margin: 10px 0;
             font-size: 1.1rem;
-            color: #333;
+            color:  #333;
         }
         .product p {
             color: #666;
@@ -163,6 +164,7 @@
                             @(!product.IsInStock ? "disabled" : "")>
                         @(product.IsInStock ? "Add to Cart" : "Out of Stock")
                     </button>
+              
                 </div>
             }
         }

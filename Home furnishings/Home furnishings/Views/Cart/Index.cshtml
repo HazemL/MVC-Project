@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Your Shopping Cart";
+    Layout = "_MyLayout";
 }
 
 <!DOCTYPE html>
@@ -15,14 +16,14 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            background: #f5f5f5;
+            background: #e0dcdc;
             color: #333;
         }
 
         header {
             background: #873e23;
             color: white;
-            padding: 15px 20px;
+      
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -33,24 +34,24 @@
                 font-size: 1.5rem;
             }
 
-        .nav-links {
+        /* .nav-links {
             list-style: none;
             display: flex;
             gap: 50px;
             margin: 0;
             padding: 0;
-        }
+        } */
 
-            .nav-links a {
+            /* .nav-links a {
                 text-decoration: none;
                 color: white;
                 transition: color 0.3s ease;
-            }
+            } */
 
         .cart-container {
             max-width: 900px;
-            margin: 30px auto;
-            background: white;
+            margin: 60px auto;
+            background: #ededed;
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -156,18 +157,19 @@
             background: #c0392b;
             color: white;
         }
+
+        .nav-links a,
+        .nav-links a:visited,
+        .nav-links a:hover,
+        .nav-links a:active {
+            color: white;
+            text-decoration: none;
+        }
+
     </style>
 </head>
 <body>
-    <header>
-        <h1>Your Shopping Cart</h1>
-        <nav>
-            <ul class="nav-links">
-                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                <li><a asp-controller="Product" asp-action="Index">Continue Shopping</a></li>
-            </ul>
-        </nav>
-    </header>
+  
 
     <div class="cart-container">
         @if (Model.Items.Any())
