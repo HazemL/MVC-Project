@@ -68,6 +68,10 @@
 
 </head>
 
+@using Microsoft.AspNetCore.Identity
+@using Home_furnishings.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 <body>
 
     <!--offcanvas menu area start-->
@@ -101,6 +105,7 @@
                                         <li><a href="contact.html">Contact Us</a></li>
                                     </ul>
                                 </li>
+                              
                                 <a style="" href="" class="btn btn-primary py-2 px-4 d-none d-lg-block me-2">Login</a>
                                 <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Join Us</a>
 
@@ -145,23 +150,48 @@
                                             <li><a href="contact.html">Contact Us</a></li>
                                         </ul>
                                     </li>
-                                    <li>
-                                        <a asp-controller="Role" asp-action="Create">Crate Role</a>
-                                    </li>
-                                    <li>
-                                        <a asp-controller="Role" asp-action="ManageUserRoles">ManageUserRoles</a>
-                                    </li>
-                                    <li>
-                                        <a asp-controller="Role" asp-action="EditUserRoles">EditUserRoles</a>
-                                    </li>
+                                    @if (SignInManager.IsSignedIn(User))
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link disabled text-success fw-bold">
+                                                Welcome, @User.Identity.Name
+                                            </a>
+                                        </li>
 
-                                    <li ">
-                                        <a asp-action="Login" asp-controller="Account" > Login</a>
-                                    </li>
-                                    <li>
-                                        <a asp-action="Register" asp-controller="Account"> Register</a>
-                                    </li>
+                                        @*  Admin *@
+                                        @if (User.IsInRole("admin"))
+                                        {
+                                            <li>
+                                                <a asp-controller="Role" asp-action="Index">Manage Roles</a>
+                                            </li>
 
+                                            <li>
+                                                <a asp-controller="Role" asp-action="ManageUserRoles">Manage User Roles</a>
+                                            </li>
+
+
+                                        }
+
+
+
+
+                                        <li>
+                                            <a asp-controller="Account" asp-action="Logout">Logout</a>
+                                        </li>
+
+
+
+                                    }
+                                    else
+                                    {
+                                        @* if user not authun *@
+                                        <li>
+                                            <a asp-controller="Account" asp-action="Login">Login</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Account" asp-action="Register">Register</a>
+                                        </li>
+                                    }
 
 
                                 </ul>

@@ -43,14 +43,13 @@ namespace Home_furnishings.Controllers
                 return View();
             }
 
-            var roleExists = await _roleManager.RoleExistsAsync(roleName);
-            if (roleExists)
+            if (await _roleManager.RoleExistsAsync(roleName))
             {
                 ModelState.AddModelError("", "Role already exists");
                 return View();
             }
 
-            var result = await _roleManager.CreateAsync(new IdentityRole<int> { Name = roleName });
+            var result = await _roleManager.CreateAsync(new IdentityRole<int>(roleName));
 
             if (result.Succeeded)
             {

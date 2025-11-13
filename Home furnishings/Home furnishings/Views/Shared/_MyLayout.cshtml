@@ -68,11 +68,17 @@
 
 </head>
 
+
+@using Microsoft.AspNetCore.Identity
+@using Home_furnishings.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
 <body>
 
     <!--offcanvas menu area start-->
-    <div class="body_overlay">
-    </div>
+    <div class="body_overlay"></div>
     <div class="offcanvas_menu">
         <div class="container">
             <div class="row">
@@ -81,19 +87,20 @@
                         <div class="canvas_close">
                             <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
                         </div>
-                        <div id="menu" class="text-left ">
+                        <div id="menu" class="text-left">
                             <ul class="offcanvas_main_menu">
                                 <li class="menu-item-has-children active">
                                     <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">Home</a>
                                 </li>
-                              
+
                                 <li class="menu-item-has-children">
                                     <a href="#">Categories</a>
                                     <ul class="sub-menu">
-                                        <li> <a asp-action="Curtains" asp-controller="Category" > Curtains</a></li>
-                                       <li> <a asp-action="Carpets" asp-controller="Category" > Carpets</a></li>
-                                      
+                                        <li><a asp-action="Curtains" asp-controller="Category">Curtains</a></li>
+                                        <li><a asp-action="Carpets" asp-controller="Category">Carpets</a></li>
                                     </ul>
+                                </li>
+
                                 <li class="menu-item-has-children">
                                     <a href="#">More</a>
                                     <ul class="sub-menu">
@@ -101,12 +108,29 @@
                                         <li><a href="contact.html">Contact Us</a></li>
                                     </ul>
                                 </li>
-                                <a style="" href="" class="btn btn-primary py-2 px-4 d-none d-lg-block me-2">Login</a>
-                                <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Join Us</a>
 
-                               
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                    <li><a href="#">👋 Welcome, @User.Identity.Name</a></li>
+
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li><a asp-controller="Role" asp-action="Index">Manage Roles</a></li>
+                                        <li><a asp-controller="Admin" asp-action="Dashboard">Dashboard</a></li>
+                                    }
+
+                                    <li>
+                                        <form asp-controller="Account" asp-action="Logout" method="post">
+                                            <button type="submit" class="btn btn-link nav-link text-danger">Logout</button>
+                                        </form>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+                                    <li><a asp-controller="Account" asp-action="Register">Register</a></li>
+                                }
                             </ul>
-                     
                         </div>
                     </div>
                 </div>
@@ -115,22 +139,25 @@
     </div>
     <!--offcanvas menu area end-->
     <!--header area start-->
-    <header class="header_section mb-30">
+    <hass ="header_section mb-30">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="main_header d-flex justify-content-between align-items-center" style=" padding: 25px 10px 25px;">
+                    <div class="main_header d-flex justify-content-between align-items-center" style="padding: 25px 10px 25px; background:#873e23">
                         <div class="header_logo">
-                            <a class="sticky_none" href="index.html"><img src="/assets/img/logo/logo.png" alt=""></a>
+                            <a class="sticky_none" asp-controller="Home" asp-action="Index">
+                                <img src="/assets/img/logo/logo.png" alt="">
+                            </a>
                         </div>
+
                         <!--main menu start-->
                         <div class="main_menu d-none d-lg-block">
                             <nav>
-                                <ul class="d-flex">
+                                <ul class="d-flex align-items-center">
                                     <li>
-                                        <a asp-controller="Home" asp-action="Index" >Home</a>
+                                        <a asp-controller="Home" asp-action="Index">Home</a>
                                     </li>
-                            
+
                                     <li>
                                         <a href="#">Categories</a>
                                         <ul class="sub_menu">
@@ -138,6 +165,7 @@
                                             <li><a asp-action="Carpets" asp-controller="Category">Carpets</a></li>
                                         </ul>
                                     </li>
+
                                     <li>
                                         <a href="#">More</a>
                                         <ul class="sub_menu">
@@ -145,44 +173,72 @@
                                             <li><a href="contact.html">Contact Us</a></li>
                                         </ul>
                                     </li>
-                                    <li>
-                                        <a asp-action="Login" asp-controller="Account" > Login</a>
-                                    </li>
-                                    <li>
-                                        <a asp-action="Register" asp-controller="Account"  > Register</a>
-                                    </li>
-                                   
-                                
-                               
+
+
+                                    @if (SignInManager.IsSignedIn(User))
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link disabled text-success fw-bold">
+                                                Welcome, @User.Identity.Name
+                                            </a>
+                                        </li>
+
+                                        @*  Admin *@
+                                        @if (User.IsInRole("admin"))
+                                        {
+                                            <li>
+                                                <a asp-controller="Role" asp-action="Index">Manage Roles</a>
+                                            </li>
+
+                                            <li>
+                                                <a asp-controller="Role" asp-action="ManageUserRoles">Manage User Roles</a>
+                                            </li>
+
+
+                                        }
+
+                                        
+                                            
+
+                                        <li>
+                                            <a asp-controller="Account" asp-action="Logout">Logout</a>
+                                        </li>
+
+
+                                       
+                                    }
+                                    else
+                                    {
+                                        @* if user not authun *@
+                                        <li>
+                                            <a asp-controller="Account" asp-action="Login">Login</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Account" asp-action="Register">Register</a>
+                                        </li>
+                                    }
                                 </ul>
                             </nav>
                         </div>
-                        <!--main menu end-->
+
+
+
+
+                        <!--main menu end   (CArt - search)-->
+
                         <div class="header__ridebar d-flex align-items-center">
                             <div class="header_account">
                                 <ul class="d-flex">
                                     <li class="header_search_btn">
                                         <a href="#">
-                                            <img src="/assets/img/icon/Search1.png"
-                                                 alt="" style="width:30px">
+                                            <img src="/assets/img/icon/Search1.png" alt="" style="width:30px">
                                         </a>
                                     </li>
                                     <li class="shopping_cart">
                                         <a asp-controller="Cart" asp-action="Index">
                                             <img src="~/assets/img/icon/shopping-cart.png" alt="Cart" style="width:30px;margin-right:20px;" />
                                         </a>
-
                                     </li>
-                                    @* <li class="account_link_menu">
-                                        <a href="#">
-                                            <img src="/assets/img/icon/person.png"
-                                                 alt="">
-                                        </a>
-                                        <ul class="dropdown_account_link">
-                                            <li><a href="">About Us</a></li>
-                                            <li><a href="">Contact Us</a></li>
-                                        </ul>
-                                    </li> *@
                                 </ul>
                             </div>
                             <div class="canvas_open">
@@ -193,8 +249,7 @@
                 </div>
             </div>
         </div>
-    </header>
-    <!--mini cart-->
+        </header>  <!--mini cart-->
     @* <div class="mini_cart">
         <div class="cart_gallery">
             <div class="cart_close">

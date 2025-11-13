@@ -11,11 +11,14 @@ namespace Home_furnishings.Controllers
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly RoleManager<IdentityRole<int>> roleManager;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole<int>> roleManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.roleManager = roleManager;
+
         }
 
 
@@ -46,7 +49,12 @@ namespace Home_furnishings.Controllers
                 var result = await userManager.CreateAsync(_user, model.Password);
                 if (result.Succeeded)
                 {
-                   
+
+
+                    await roleManager.CreateAsync(new IdentityRole<int>("Customer")); 
+
+
+
                     TempData["Email"] = model.Email;
                     TempData["Password"] = model.Password;
 
@@ -100,7 +108,7 @@ namespace Home_furnishings.Controllers
             if (ModelState.IsValid)
             {
 
-                var user = await userManager.FindByEmailAsync(model.Email); // أو FindByNameAsync
+                var user = await userManager.FindByEmailAsync(model.Email); 
                 if (user != null)
                 {
 
