@@ -100,9 +100,15 @@ namespace Home_furnishings.Controllers
             _cartRepository.AddProductToCart(cart.CartId, model.ProductId);
 
             int cartCount = _cartRepository.GetCartItemCount(user.Id);
-            return Json(new { success = true, message = "Product added to cart", cartCount });
-        }
 
+            return Json(new
+            {
+                success = true,
+                message = "Product added to cart",   // ⬅️ Toast friendly message
+                cartCount = cartCount
+            });
+        }
+    
         // POST: Cart/Remove
         [HttpPost]
         public async Task<IActionResult> Remove(int productId)

@@ -157,11 +157,12 @@
                         @(product.IsInStock ? $"In Stock ({product.Quantity})" : "Out of Stock")
                     </p>
                     <button class="btn add-to-cart" 
+                            onclick="addToCart(@product.ProductId)
                             data-id="@product.ProductId" 
                             data-name="@product.Name" 
                             data-price="@product.Price" 
                             data-image="@product.ImageUrl"
-                            @(!product.IsInStock ? "disabled" : "")>
+                            @(!product.IsInStock ? "disabled" : "") >
                         @(product.IsInStock ? "Add to Cart" : "Out of Stock")
                     </button>
               
