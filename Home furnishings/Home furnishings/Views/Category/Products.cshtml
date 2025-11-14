@@ -156,8 +156,7 @@
                     <p style="color: @(product.IsInStock ? "green" : "red")">
                         @(product.IsInStock ? $"In Stock ({product.Quantity})" : "Out of Stock")
                     </p>
-                    <button class="btn add-to-cart" 
-                            onclick="addToCart(@product.ProductId)
+                    <button class="btn add-to-cart"                         
                             data-id="@product.ProductId" 
                             data-name="@product.Name" 
                             data-price="@product.Price" 

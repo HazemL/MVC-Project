@@ -50,15 +50,11 @@ namespace Home_furnishings.Controllers
                 if (result.Succeeded)
                 {
 
-
-                    await roleManager.CreateAsync(new IdentityRole<int>("Customer")); 
-
-
-
                     TempData["Email"] = model.Email;
                     TempData["Password"] = model.Password;
-
                     TempData["Success"] = "Registration successful! Please login.";
+
+
                     return RedirectToAction("Login", "Account");
                 }
 
